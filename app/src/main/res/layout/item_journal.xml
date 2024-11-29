@@ -2,7 +2,11 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center_vertical"
+    app:cardCornerRadius="10dp"
+    android:layout_marginVertical="5dp"
+
     android:elevation="1dp">
 
     <LinearLayout
@@ -16,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:text="12/12/2020"
+            android:text="@string/_12_12_2020"
             android:textColor="@color/gray"
             android:textSize="12sp" />
 
@@ -29,14 +33,15 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Mood "
+                android:text="@string/jam_belajar"
                 android:textColor="@color/gray"
                 android:textSize="14sp" />
             <TextView
+                android:id="@+id/tvStudyTime"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text=": Happy"
+                android:text="@string/_2_jam"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -51,14 +56,15 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Tingkat Stress "
+                android:text="@string/jam_ekstrakulikuler"
                 android:textColor="@color/gray"
                 android:textSize="14sp" />
             <TextView
+                android:id="@+id/tvExtracurricularTime"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text=": Sangat Stress"
+                android:text="@string/_2_jam"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -74,14 +80,15 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Kualitas Tidur"
+                android:text="@string/jam_tidur"
                 android:textColor="@color/gray"
                 android:textSize="14sp" />
             <TextView
+                android:id="@+id/tvSleepTime"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text=": Buruk"
+                android:text="@string/_2_jam"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -96,14 +103,15 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Aktifitas Fisik"
+                android:text="@string/jam_sosial"
                 android:textColor="@color/gray"
                 android:textSize="14sp" />
             <TextView
+                android:id="@+id/tvSocialTime"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text=": Aktif"
+                android:text="@string/_2_jam"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -118,20 +126,18 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Catatan"
+                android:text="@string/jam_aktifitas_fisik"
                 android:textColor="@color/gray"
                 android:textSize="14sp" />
             <TextView
+                android:id="@+id/tvPhysicalActivityTime"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text=": Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nib"
-                android:lines="3"
+                android:text="@string/_2_jam"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
-
         </LinearLayout>
-
 
     </LinearLayout>
 

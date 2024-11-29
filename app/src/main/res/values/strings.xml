@@ -25,4 +25,17 @@
     <string name="journal">Journal</string>
     <string name="profile">Profile</string>
     <string name="history">History</string>
+    <string name="_2_jam">: 2 Jam</string>
+    <string name="_12_12_2020">12/12/2020</string>
+    <string name="jam_belajar">Jam Belajar</string>
+    <string name="jam_ekstrakulikuler">Jam Ekstrakulikuler</string>
+    <string name="jam_tidur">Jam Tidur</string>
+    <string name="jam_sosial">Jam Sosial</string>
+    <string name="jam_aktifitas_fisik">Jam Aktifitas Fisik</string>
+    <string name="my">My</string>
+    <string name="logout">Logout</string>
+    <string name="andi_sugara">Andi Sugara</string>
+    <string name="sugaraandi9_gmail_com">sugaraandi9@gmail.com</string>
+    <string name="healing_isn_t_about_changing_who_you_are">Healing isn’t about changing who you are</string>
+    <string name="joural_hari_ini">Joural Hari Ini</string>
 </resources>
