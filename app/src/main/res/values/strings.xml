@@ -38,4 +38,13 @@
     <string name="sugaraandi9_gmail_com">sugaraandi9@gmail.com</string>
     <string name="healing_isn_t_about_changing_who_you_are">Healing isn’t about changing who you are</string>
     <string name="joural_hari_ini">Joural Hari Ini</string>
+    <string name="isi_jurnal">Isi Jurnal</string>
+    <string name="anda_belum_mengisi_jurnal_hari_ini">Anda Belum Mengisi Jurnal Hari Ini</string>
+    <string name="belajar">belajar</string>
+    <string name="ekstrakurikuler">Ekstrakurikuler</string>
+    <string name="tidur">Tidur</string>
+    <string name="aktifitas_fisik">Aktifitas Fisik</string>
+    <string name="lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
+    <string name="rekomendasi_untukmu">Rekomendasi Untukmu</string>
+    <string name="perbanyak_olahraga">Perbanyak Olahraga</string>
 </resources>

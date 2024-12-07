@@ -21,11 +21,11 @@ class JournalAdapter : ListAdapter<JournalItem, JournalAdapter.MyViewHolder>(DIF
     }
     class MyViewHolder(val binding: ItemJournalBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(journal: JournalItem){
-            binding.tvStudyTime.text = journal.studyHours.toString()
-            binding.tvExtracurricularTime.text = journal.extracurricularHours.toString()
-            binding.tvSleepTime.text = journal.sleepHours.toString()
-            binding.tvSocialTime.text = journal.socialHours.toString()
-            binding.tvPhysicalActivityTime.text = journal.physicalActivityHours.toString()
+            binding.tvStudyTime.text = ": ${journal.studyHours} hours"
+            binding.tvExtracurricularTime.text = ": ${journal.extracurricularHours} hours"
+            binding.tvSleepTime.text = ": ${journal.sleepHours} hours"
+            binding.tvSocialTime.text = ": ${journal.socialHours} hours"
+            binding.tvPhysicalActivityTime.text = ": ${journal.physicalActivityHours} hours"
         }
     }
     companion object {
