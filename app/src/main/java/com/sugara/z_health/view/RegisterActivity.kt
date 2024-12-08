@@ -1,5 +1,6 @@
 package com.sugara.z_health.view
 
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
@@ -99,14 +100,26 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         registerViewModel.response.observe(this) { response ->
-            Toast.makeText(this, response.message, Toast.LENGTH_SHORT).show()
+            val builder = AlertDialog.Builder(this)
+            builder.setMessage(response.message)
+            builder.setCancelable(false)
+
             if (response.isSuccess) {
-                startActivity(Intent(this, LoginActivity::class.java))
-                finish()
+                builder.setTitle("Success")
+                builder.setPositiveButton("OK") { dialog, _ ->
+                    startActivity(Intent(this, LoginActivity::class.java))
+                    finish()
+                }
+            } else {
+                builder.setTitle("Error")
+                builder.setPositiveButton("OK") { dialog, _ ->
+                    dialog.dismiss()
+                }
             }
+
+            val alertDialog = builder.create()
+            alertDialog.show()
         }
-
-
 
     }
 

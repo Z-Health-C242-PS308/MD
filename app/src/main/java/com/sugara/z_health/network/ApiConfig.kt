@@ -2,10 +2,12 @@ package com.sugara.z_health.network
 
 import com.sugara.z_health.BuildConfig
 import com.sugara.z_health.data.api.ApiService
+import com.sugara.z_health.utils.UrlHelper
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 
 class ApiConfig {
@@ -18,9 +20,12 @@ class ApiConfig {
             }
             val client = OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
+                .connectTimeout(1, TimeUnit.MINUTES)
+                .readTimeout(1, TimeUnit.MINUTES)
+                .writeTimeout(1, TimeUnit.MINUTES)
                 .build()
             val retrofit = Retrofit.Builder()
-                .baseUrl("https://z-healths.et.r.appspot.com/")
+                .baseUrl(UrlHelper.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()

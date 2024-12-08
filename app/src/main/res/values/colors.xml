@@ -4,6 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#777E75</color>
     <color name="primary">#52BD1D</color>
+    <color name="primaryHover">#95E66D</color>
     <color name="primary_dark">#3F8C0D</color>
     <color name="backgroundColor">#F6FBF4</color>
     <color name="error">#FF0000</color>
