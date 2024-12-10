@@ -46,7 +46,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/civAvatar"
+            android:id="@+id/civAvatarprofile"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
@@ -81,6 +81,15 @@
             android:layout_marginTop="40dp"
             android:background="@drawable/button"
             android:text="@string/logout"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btnEditt"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/button"
+            android:text="@string/Edit_profile"
             android:textColor="@color/white" />
 
 

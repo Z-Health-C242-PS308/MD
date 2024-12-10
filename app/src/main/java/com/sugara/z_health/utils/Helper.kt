@@ -3,8 +3,11 @@ package com.sugara.z_health.utils
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.Drawable
+import android.net.Uri
 import androidx.core.content.ContextCompat
 import com.sugara.z_health.R
+import java.io.File
+import java.io.IOException
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 import java.text.SimpleDateFormat
@@ -28,6 +31,20 @@ class Helper {
         val date = formatter.parse(date)
         val newFormatter = SimpleDateFormat("yyyy-MM-dd")
         return newFormatter.format(date)
+    }
+
+    fun loadJSONFromAsset(context: Context, fileName: String): String? {
+        return try {
+            val inputStream = context.assets.open(fileName)
+            val size = inputStream.available()
+            val buffer = ByteArray(size)
+            inputStream.read(buffer)
+            inputStream.close()
+            String(buffer, Charsets.UTF_8)
+        } catch (ex: IOException) {
+            ex.printStackTrace()
+            null
+        }
     }
 
     fun generateColor(level: String): Int {
@@ -62,34 +79,46 @@ class Helper {
         }
     }
 
-    fun getDrawableResource(context: Context, key: String): Drawable? {
-        val drawableRes = when (key) {
-            "Konseling" -> R.drawable.ic_konseling
-            "Hotline" -> R.drawable.ic_hotline
-            "Sosialisasi" -> R.drawable.afirmasidiri
-            "Olahraga" -> R.drawable.ic_sport
-            "Tidur" -> R.drawable.ic_sleep
-            "Pola Makan" -> R.drawable.ic_food_healt
-            "Meditasi" -> R.drawable.ic_meditation
-            "Kelola Waktu" -> R.drawable.ic_time_management
-            "Menggambar" -> R.drawable.ic_drawing
-            "Hobi" -> R.drawable.ic_hobby
-            "Media Sosial" -> R.drawable.ic_social_media
-            "Kafein dan Alcohol" -> R.drawable.ic_coffe
-            "Afirmasi Diri" -> R.drawable.afirmasidiri
-            "Atur Keuangan" -> R.drawable.ic_finance
-            "Bantuan Profesional" -> R.drawable.ic_professional_help
-            "Komunikasi" -> R.drawable.ic_communication
-            "Pengobatan" -> R.drawable.ic_medicine
-            "Perawatan diri" -> R.drawable.afirmasidiri
-            "Batasi Jam Kerja" -> R.drawable.ic_time_management
-            "Hubungin teman" -> R.drawable.ic_friendship_call
-            "Hubungi orang tua" -> R.drawable.ic_parent_call
-            "Atur emosi" -> R.drawable.ic_emotional_management
-            "Identifikasi" -> R.drawable.ic_identifikasi
-            "Rekomendasi Umum" -> R.drawable.ic_rekomendasi
-            else -> R.drawable.ic_rekomendasi
+    fun getFileFromUri(context: Context, uri: Uri): File {
+        val inputStream = context.contentResolver.openInputStream(uri)
+        val tempFile = File.createTempFile("upload", null, context.cacheDir)
+        tempFile.outputStream().use { outputStream ->
+            inputStream?.copyTo(outputStream)
         }
-        return drawableRes?.let { ContextCompat.getDrawable(context, it) }
+        return tempFile
     }
+
+
+
+    fun getDrawableResource(context: Context, key: String): Drawable? {
+        return when (key) {
+            "Konseling" -> ContextCompat.getDrawable(context, R.drawable.ic_counseling)
+            "Hotline" -> ContextCompat.getDrawable(context, R.drawable.ic_hotline)
+            "Sosialisasi" -> ContextCompat.getDrawable(context, R.drawable.ic_socialization)
+            "Olahraga" -> ContextCompat.getDrawable(context, R.drawable.ic_sports)
+            "Tidur" -> ContextCompat.getDrawable(context, R.drawable.ic_sleep)
+            "Pola Makan" -> ContextCompat.getDrawable(context, R.drawable.ic_food)
+            "Meditasi" -> ContextCompat.getDrawable(context, R.drawable.ic_meditation)
+            "Kelola Waktu" -> ContextCompat.getDrawable(context, R.drawable.ic_time_management)
+            "Menggambar" -> ContextCompat.getDrawable(context, R.drawable.ic_drawing)
+            "Hobi" -> ContextCompat.getDrawable(context, R.drawable.ic_hobby)
+            "Media Sosial" -> ContextCompat.getDrawable(context, R.drawable.ic_sosmed)
+            "Kafein dan Alcohol" -> ContextCompat.getDrawable(context, R.drawable.ic_caffeine_alcohol)
+            "Afirmasi Diri" -> ContextCompat.getDrawable(context, R.drawable.ic_self_affirmation)
+            "Atur Keuangan" -> ContextCompat.getDrawable(context, R.drawable.ic_finance_management)
+            "Bantuan Profesional" -> ContextCompat.getDrawable(context, R.drawable.ic_professional_help)
+            "Komunikasi" -> ContextCompat.getDrawable(context, R.drawable.ic_communication)
+            "Pengobatan" -> ContextCompat.getDrawable(context, R.drawable.ic_medication)
+            "Perawatan Diri" -> ContextCompat.getDrawable(context, R.drawable.ic_self_care)
+            "Batasi Jam Kerja" -> ContextCompat.getDrawable(context, R.drawable.ic_time_management)
+            "Hubungi Teman" -> ContextCompat.getDrawable(context, R.drawable.ic_contact_friends)
+            "Hubungi Orang Tua" -> ContextCompat.getDrawable(context, R.drawable.ic_contact_parents)
+            "Atur Emosi" -> ContextCompat.getDrawable(context, R.drawable.ic_emotion_control)
+            "Identifikasi" -> ContextCompat.getDrawable(context, R.drawable.ic_identification)
+            "Rekomendasi Umum" -> ContextCompat.getDrawable(context, R.drawable.ic_general_recommendation)
+            else -> null // Kembalikan null jika tidak ada yang cocok
+        }
+    }
+
+
 }

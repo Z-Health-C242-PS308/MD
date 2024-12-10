@@ -1,5 +1,6 @@
 package com.sugara.z_health.data
 
+
 import com.sugara.z_health.data.model.UserLogin
 import com.sugara.z_health.data.pref.UserPreference
 import kotlinx.coroutines.flow.Flow
@@ -19,6 +20,9 @@ class UserRepository private constructor(
     suspend fun logout() {
         userPreference.logout()
     }
+
+
+
 
     companion object {
         @Volatile

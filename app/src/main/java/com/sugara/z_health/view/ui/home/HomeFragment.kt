@@ -27,6 +27,7 @@ import com.sugara.z_health.databinding.FragmentHomeBinding
 import com.sugara.z_health.utils.EmojiValueFormatter
 import com.sugara.z_health.utils.Helper
 import com.sugara.z_health.view.FormJournalActivity
+import com.sugara.z_health.view.ui.rekomendasi.RekomendasiActivity
 import com.sugara.z_health.viewmodel.ViewModelFactory
 
 class HomeFragment : Fragment() {
@@ -154,6 +155,14 @@ class HomeFragment : Fragment() {
                 binding.moodChart.visibility = View.GONE
             }
         }
+
+
+        binding.recomendationContent.setOnClickListener {
+            val intent = Intent(requireContext(), RekomendasiActivity::class.java)
+            startActivity(intent)
+        }
+
+
 
 
     }

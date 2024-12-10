@@ -78,7 +78,7 @@ class RegisterActivity : AppCompatActivity() {
                         email = email,
                         password = password,
                         birthdate = birthdate,
-                        profileImg = "avatar.jpg",
+                        profileImg = "d_avatar_10.png",
                         confirmPass = confirmPassword
                     )
                     registerViewModel.register(register)

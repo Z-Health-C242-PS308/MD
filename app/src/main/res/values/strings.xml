@@ -45,7 +45,7 @@
     <string name="tidur">Tidur</string>
     <string name="aktifitas_fisik">Aktifitas Fisik</string>
     <string name="lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
-    <string name="rekomendasi_untukmu">Rekomendasi Untukmu</string>
+    <string name="rekomendasi_untukmu">Rekomendasi Kegiatan Untuk Anda</string>
     <string name="perbanyak_olahraga">Perbanyak Olahraga</string>
     <string name="mood_tracker">Mood Tracker</string>
     <string name="buat">Buat</string>
@@ -54,4 +54,28 @@
     <string name="belum_ada_rekomendasi_untukmu">Belum ada rekomendasi untukmu</string>
     <string name="loading">Loading...</string>
     <string name="belum_ada_riwayat_mood">Belum ada riwayat mood</string>
+    <string name="rekomendasi">Rekomendasi Untukmu\n</string>
+    <string name="tidak_ada_data">Tidak ada Data</string>
+    <string name="select_image">Edit Photo\n</string>
+    <string name="save_changes">Save Changes</string>
+    <string name="dont_want_to_change">Dont want to change?</string>
+    <string name="cancel">Cancel</string>
+    <string name="gender">Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="other">Other</string>
+    <string name="Edit_profile">Edit Profile</string>
+    <string name="recommendation_icon">Ini Rekomendasi</string>
+    <string name="icon_description">Ini Deskripsi</string>
+    <string name="_1_januari_2024">Tanggal\n</string>
+    <string name="lakukan_olahraga_seperti_bermain_sepak_bola_badminton_dll">Deskripsi</string>
+    <string name="phone_number">Number Phone</string>
+    <string name="enter_your_phone_number">Enter your number phone</string>
+
+
+
+        <string name="category_high">High</string>
+        <string name="category_moderate">Moderate</string>
+        <string name="category_low">Low</string>
+
 </resources>

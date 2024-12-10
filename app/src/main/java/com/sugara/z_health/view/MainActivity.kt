@@ -6,10 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.lifecycle.ViewModelProvider
-import com.sugara.z_health.R
-import com.sugara.z_health.databinding.ActivityLoginBinding
 import com.sugara.z_health.databinding.ActivityMainBinding
-import com.sugara.z_health.viewmodel.LoginViewModel
 import com.sugara.z_health.viewmodel.MainViewModel
 import com.sugara.z_health.viewmodel.ViewModelFactory
 
@@ -22,6 +19,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
 
         mainViewModel = obtainViewModel(this)
 
@@ -41,6 +40,8 @@ class MainActivity : AppCompatActivity() {
 
                 }, 2000)
         }
+
+
 
     }
 

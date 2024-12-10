@@ -2,11 +2,9 @@ package com.sugara.z_health.view.ui.profile
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -14,19 +12,12 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.sugara.z_health.databinding.FragmentProfileBinding
 import com.sugara.z_health.utils.Helper
-import com.sugara.z_health.utils.UrlHelper
 import com.sugara.z_health.view.LoginActivity
-import com.sugara.z_health.viewmodel.MainViewModel
 import com.sugara.z_health.viewmodel.ViewModelFactory
-import java.net.URLEncoder
-import java.nio.charset.StandardCharsets
 
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
     private lateinit var profileViewModel: ProfileViewModel
 
@@ -35,11 +26,8 @@ class ProfileFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        return root
+        return binding.root
     }
 
     override fun onDestroyView() {
@@ -50,10 +38,10 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         profileViewModel = obtainViewModel(requireActivity() as AppCompatActivity)
+
         binding.btnLogout.setOnClickListener {
             profileViewModel.logout()
-            val mIntent = Intent(requireContext(), LoginActivity::class.java)
-            startActivity(mIntent)
+            startActivity(Intent(requireContext(), LoginActivity::class.java))
             requireActivity().finish()
         }
 
@@ -62,9 +50,13 @@ class ProfileFragment : Fragment() {
             binding.tvEmail.text = user.email
             val encodedUrl = Helper().encodeUrl(user.profileImg ?: "")
             Glide.with(requireContext())
-                .load("$encodedUrl")
+                .load(encodedUrl)
                 .apply(RequestOptions())
-                .into(binding.civAvatar)
+                .into(binding.civAvatarprofile)
+        }
+
+        binding.btnEditt.setOnClickListener {
+            startActivity(Intent(requireContext(), ProfileEditActivity::class.java))
         }
     }
 

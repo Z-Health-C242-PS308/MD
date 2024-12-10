@@ -11,11 +11,12 @@ import com.sugara.z_health.data.model.UserLogin
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-
+// Extension property to access the DataStore instance.
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "session")
 
 class UserPreference private constructor(private val dataStore: DataStore<Preferences>) {
 
+    // Save user session data in the DataStore.
     suspend fun saveSession(user: UserLogin) {
         dataStore.edit { preferences ->
             preferences[USER_ID_KEY] = user.userId ?: ""
@@ -27,6 +28,7 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         }
     }
 
+    // Retrieve user session data as a Flow.
     fun getSession(): Flow<UserLogin> {
         return dataStore.data.map { preferences ->
             val userId = preferences[USER_ID_KEY] ?: ""
@@ -46,16 +48,26 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         }
     }
 
+    // Logout by clearing the session data from the DataStore.
     suspend fun logout() {
         dataStore.edit { preferences ->
-            preferences.clear()
+            preferences.remove(USER_ID_KEY)
+            preferences.remove(TOKEN_KEY)
+            preferences.remove(IS_LOGIN_KEY)
+            preferences.remove(FULL_NAME_KEY)
+            preferences.remove(EMAIL_KEY)
+            preferences.remove(PROFILE_IMG_KEY)
         }
     }
+
+
+
 
     companion object {
         @Volatile
         private var INSTANCE: UserPreference? = null
 
+        // Keys to store and retrieve data from DataStore.
         private val USER_ID_KEY = stringPreferencesKey("userId")
         private val TOKEN_KEY = stringPreferencesKey("token")
         private val IS_LOGIN_KEY = booleanPreferencesKey("isLogin")
@@ -63,6 +75,7 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         private val EMAIL_KEY = stringPreferencesKey("email")
         private val PROFILE_IMG_KEY = stringPreferencesKey("profile_img")
 
+        // Get the Singleton instance of UserPreference.
         fun getInstance(dataStore: DataStore<Preferences>): UserPreference {
             return INSTANCE ?: synchronized(this) {
                 val instance = UserPreference(dataStore)
