@@ -4,8 +4,6 @@
 Capstone Project C242-PS308
 
 
-![Logo](https://storage.cloud.google.com/z-health-bucket23/logo/Group%207.png)
-
 
 ## Installation
 
