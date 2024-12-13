@@ -25,6 +25,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var binding : ActivityRegisterBinding
     private lateinit var registerViewModel: RegisterViewModel
     private lateinit var register : User
+    private lateinit var loadingDialog: AlertDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -90,10 +91,12 @@ class RegisterActivity : AppCompatActivity() {
         registerViewModel.isLoading.observe(this) { isLoading ->
             //set text button register to spinner and disable button
             if (isLoading) {
+                showLoadingDialog()
                 binding.btnRegister.text = "Loading..."
                 binding.btnRegister.isEnabled = false
             } else {
                 //set text button register to register and enable button
+                dismissLoadingDialog()
                 binding.btnRegister.text = "Register"
                 binding.btnRegister.isEnabled = true
             }
@@ -151,5 +154,22 @@ class RegisterActivity : AppCompatActivity() {
     private fun obtainViewModel(activity: AppCompatActivity): RegisterViewModel {
         val factory = ViewModelFactory.getInstance(activity.application)
         return ViewModelProvider(activity, factory).get(RegisterViewModel::class.java)
+    }
+
+
+    private fun showLoadingDialog() {
+        val builder = AlertDialog.Builder(this)
+        val inflater = layoutInflater
+        val dialogView = inflater.inflate(R.layout.dialog_loading, null)
+        builder.setView(dialogView)
+        builder.setCancelable(false)
+        loadingDialog = builder.create()
+        loadingDialog.show()
+    }
+
+    private fun dismissLoadingDialog() {
+        if (::loadingDialog.isInitialized && loadingDialog.isShowing) {
+            loadingDialog.dismiss()
+        }
     }
 }

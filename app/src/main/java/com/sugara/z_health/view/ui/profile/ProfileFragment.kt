@@ -15,6 +15,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.sugara.z_health.databinding.FragmentProfileBinding
 import com.sugara.z_health.utils.Helper
 import com.sugara.z_health.utils.UrlHelper
+import com.sugara.z_health.view.EditProfileActivity
 import com.sugara.z_health.view.LoginActivity
 import com.sugara.z_health.viewmodel.MainViewModel
 import com.sugara.z_health.viewmodel.ViewModelFactory
@@ -55,6 +56,10 @@ class ProfileFragment : Fragment() {
             val mIntent = Intent(requireContext(), LoginActivity::class.java)
             startActivity(mIntent)
             requireActivity().finish()
+        }
+        binding.btnEdit.setOnClickListener {
+            val mIntent = Intent(requireContext(), EditProfileActivity::class.java)
+            startActivity(mIntent)
         }
 
         profileViewModel.getSession().observe(viewLifecycleOwner) { user ->

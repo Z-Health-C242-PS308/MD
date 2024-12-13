@@ -1,6 +1,7 @@
 package com.sugara.z_health.view.ui.journal
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -82,7 +83,7 @@ class JournalFragment : Fragment() {
         val adapter = JournalAdapter()
         adapter.submitList(listEvents)
         binding.rvJournal.setHasFixedSize(true)
-        binding.rvJournal.isNestedScrollingEnabled = false
+        binding.rvJournal.isNestedScrollingEnabled = true
         binding.rvJournal.adapter = adapter
 
     }

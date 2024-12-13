@@ -8,4 +8,5 @@
     <color name="primary_dark">#3F8C0D</color>
     <color name="backgroundColor">#F6FBF4</color>
     <color name="error">#FF0000</color>
+    <color name="warning">#FFA500</color>
 </resources>

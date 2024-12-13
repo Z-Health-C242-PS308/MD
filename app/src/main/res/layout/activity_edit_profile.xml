@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    tools:context=".view.EditProfileActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="50dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civAvatar"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/d_avatar_10"
+                app:civ_border_color="@color/primary"
+                app:civ_border_width="2dp" />
+
+            <ImageView
+                android:id="@+id/ivCamera"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignBottom="@id/civAvatar"
+                android:layout_alignEnd="@id/civAvatar"
+                android:layout_marginEnd="-10dp"
+                android:layout_marginBottom="-1dp"
+                android:src="@drawable/baseline_camera_alt_24"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fullname"
+            android:textColor="@color/black"
+            android:layout_marginTop="20dp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/input_selector"
+            android:layout_marginTop="5dp"
+            android:hint="@string/enter_your_fullname"
+            android:inputType="text"
+            android:id="@+id/et_fullname"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/email"
+            android:textColor="@color/black"
+            android:layout_marginTop="20dp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/input_selector"
+            android:layout_marginTop="5dp"
+            android:hint="@string/enter_your_email"
+            android:inputType="textEmailAddress"
+            android:id="@+id/et_email"
+            android:enabled="false"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/date_of_birth"
+            android:textColor="@color/black"
+            android:layout_marginTop="20dp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/input_selector"
+            android:layout_marginTop="5dp"
+            android:hint="@string/enter_your_date_of_birth"
+            android:inputType="date"
+            android:id="@+id/et_date"
+            android:focusable="false"
+            android:focusableInTouchMode="true"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@color/warning"
+            android:padding="10dp"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/jika_ingin_mengganti_password_silahkan_isi_password_baru"
+            />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/password"
+            android:textColor="@color/black"
+            android:layout_marginTop="20dp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/input_selector"
+            android:layout_marginTop="5dp"
+            android:hint="@string/enter_your_password"
+            android:inputType="textPassword"
+            android:id="@+id/et_password"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/confirm_password"
+            android:textColor="@color/black"
+            android:layout_marginTop="20dp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/input_selector"
+            android:layout_marginTop="5dp"
+            android:hint="@string/enter_your_password_again"
+            android:inputType="textPassword"
+            android:id="@+id/et_confirmpassword"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/update_profile"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp"
+            android:id="@+id/btn_update"
+            android:background="@drawable/button_background"
+            android:stateListAnimator="@null"
+            />
+
+    </LinearLayout>
+
+
+
+</ScrollView>

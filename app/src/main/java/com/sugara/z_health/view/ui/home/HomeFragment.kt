@@ -13,20 +13,17 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.github.mikephil.charting.charts.BarChart
-import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
-import com.github.mikephil.charting.data.PieData
-import com.github.mikephil.charting.data.PieDataSet
-import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.sugara.z_health.data.model.JournalItem
 import com.sugara.z_health.databinding.FragmentHomeBinding
 import com.sugara.z_health.utils.EmojiValueFormatter
 import com.sugara.z_health.utils.Helper
 import com.sugara.z_health.view.FormJournalActivity
+import com.sugara.z_health.view.HistoryRecomendationActivity
 import com.sugara.z_health.viewmodel.ViewModelFactory
 
 class HomeFragment : Fragment() {
@@ -34,11 +31,8 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private lateinit var userId : String
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
     private lateinit var barChart: BarChart
-    private lateinit var pieChart: PieChart
     private lateinit var homeViewModel: HomeViewModel
 
     override fun onCreateView(
@@ -50,7 +44,6 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
         barChart = binding.barChart
-        pieChart = binding.pieChart
         return root
     }
 
@@ -148,13 +141,16 @@ class HomeFragment : Fragment() {
                     }
                 }
                 setupBarChart(listPredict)
-                setupPieChart(listPredict)
             }else{
                 binding.moodEmpty.visibility = View.VISIBLE
                 binding.moodChart.visibility = View.GONE
             }
         }
 
+        binding.tvLihatSemuaRekomendasi.setOnClickListener {
+            val intent = Intent(requireContext(), HistoryRecomendationActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 
@@ -209,30 +205,5 @@ class HomeFragment : Fragment() {
         barChart.description.isEnabled = false
         barChart.legend.isEnabled = false
         barChart.invalidate() // refresh
-    }
-    private fun setupPieChart(listData: ArrayList<JournalItem>) {
-        val entries = ArrayList<PieEntry>()
-        var low = 0
-        var moderate = 0
-        var high = 0
-
-        for (item in listData) {
-            val stressLevel = item.predict?.data?.predictedStress?.stressLevel ?: ""
-            when (stressLevel) {
-                "Low" -> low++
-                "Moderate" -> moderate++
-                "High" -> high++
-            }
-        }
-
-        entries.add(PieEntry(low.toFloat(), ""))
-        entries.add(PieEntry(moderate.toFloat(), ""))
-        entries.add(PieEntry(high.toFloat(), ""))
-
-        val dataSet = PieDataSet(entries, "Stress Level")
-        dataSet.colors = listOf(Color.GREEN, Color.YELLOW, Color.RED)
-        val data = PieData(dataSet)
-        pieChart.data = data
-        pieChart.invalidate()
     }
 }

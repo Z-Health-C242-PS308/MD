@@ -18,6 +18,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding : ActivityLoginBinding
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var login : UserLogin
+    private lateinit var loadingDialog: AlertDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,9 +54,11 @@ class LoginActivity : AppCompatActivity() {
 
         loginViewModel.isLoading.observe(this) { isLoading ->
             if (isLoading) {
+                showLoadingDialog()
                 binding.btnLogin.text = "Loading..."
                 binding.btnLogin.isEnabled = false
             } else {
+                dismissLoadingDialog()
                 //set text button register to register and enable button
                 binding.btnLogin.text = "Login"
                 binding.btnLogin.isEnabled = true
@@ -92,5 +95,22 @@ class LoginActivity : AppCompatActivity() {
         return ViewModelProvider(activity, factory).get(LoginViewModel::class.java)
     }
 
+
+    private fun showLoadingDialog() {
+        val builder = AlertDialog.Builder(this)
+        val inflater = layoutInflater
+        val dialogView = inflater.inflate(R.layout.dialog_loading, null)
+        builder.setView(dialogView)
+        builder.setCancelable(false)
+        loadingDialog = builder.create()
+        loadingDialog.show()
+    }
+
+
+    private fun dismissLoadingDialog() {
+        if (::loadingDialog.isInitialized && loadingDialog.isShowing) {
+            loadingDialog.dismiss()
+        }
+    }
 
 }

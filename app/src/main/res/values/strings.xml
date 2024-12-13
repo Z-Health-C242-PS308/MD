@@ -54,4 +54,10 @@
     <string name="belum_ada_rekomendasi_untukmu">Belum ada rekomendasi untukmu</string>
     <string name="loading">Loading...</string>
     <string name="belum_ada_riwayat_mood">Belum ada riwayat mood</string>
+    <string name="recomendations">Recomendations</string>
+    <string name="height">Height</string>
+    <string name="score_100">Score : 100</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="update_profile">Update Profile</string>
+    <string name="jika_ingin_mengganti_password_silahkan_isi_password_baru">Jika ingin mengganti password, silahkan isi password baru</string>
 </resources>

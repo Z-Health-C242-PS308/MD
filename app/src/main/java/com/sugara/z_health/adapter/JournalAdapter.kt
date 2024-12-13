@@ -1,6 +1,7 @@
 package com.sugara.z_health.adapter
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -18,6 +19,7 @@ class JournalAdapter : ListAdapter<JournalsItem, JournalAdapter.MyViewHolder>(DI
     }
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val review = getItem(position)
+
         holder.bind(review)
     }
     class MyViewHolder(val binding: ItemJournalBinding) : RecyclerView.ViewHolder(binding.root) {

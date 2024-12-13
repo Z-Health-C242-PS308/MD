@@ -16,6 +16,7 @@ class FormJournalActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFormJournalBinding
     private lateinit var formJournalViewModel: FormJournalViewModel
     private lateinit var userId : String
+    private lateinit var loadingDialog: AlertDialog
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -94,15 +95,34 @@ class FormJournalActivity : AppCompatActivity() {
         formJournalViewModel.isLoading.observe(this) { isLoading ->
             //set text button register to spinner and disable button
             if (isLoading) {
+                showLoadingDialog()
                 binding.btnSubmit.text = "Loading..."
                 binding.btnSubmit.isEnabled = false
             } else {
+                dismissLoadingDialog()
                 binding.btnSubmit.text = "Simpan"
                 binding.btnSubmit.isEnabled = true
             }
         }
 
 
+    }
+
+    private fun showLoadingDialog() {
+        val builder = AlertDialog.Builder(this)
+        val inflater = layoutInflater
+        val dialogView = inflater.inflate(R.layout.dialog_loading, null)
+        builder.setView(dialogView)
+        builder.setCancelable(false)
+        loadingDialog = builder.create()
+        loadingDialog.show()
+    }
+
+
+    private fun dismissLoadingDialog() {
+        if (::loadingDialog.isInitialized && loadingDialog.isShowing) {
+            loadingDialog.dismiss()
+        }
     }
 
     private fun obtainViewModel(activity: AppCompatActivity): FormJournalViewModel {
